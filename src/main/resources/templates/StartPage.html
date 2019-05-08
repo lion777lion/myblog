@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello!</h1>
+<form method="POST" th:action="@{/new}" th:object="${dataClass}" enctype="multipart/form-data">
+    Ваше имя: <input th:field="*{name}" type="text" name="name">
+    Текст:<input th:field="*{message}" type="text" name="content">
+    <input  type="file" name="file" >
+    <input type="submit" value="Оставить сообщение">
+</form>
+<table >
+    <tr th:each="item : ${datalist}">
+        <td th:text="${item.time}"></td>
+        <td th:text="${item.name}"></td>
+        <td> says:</td>
+        <td colspan="3" th:text="${item.message}"></td>
+    </tr>
+</table>
+</body>
+</html>
